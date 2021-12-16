@@ -1,8 +1,8 @@
-azure:
-  activedirectory:
-    tenant-id: 3a3181a3-bb5d-40d6-a419-1182632ff24e
-    client-id: e66bdc97-e838-4a32-b244-cedbd47dc842
-    client-secret: Fua7Q~4Q4.4Xx9~TBLQ8UCWCS5Q2xwkr4cn-B
-    user-group:
-      allowed-group-names: group1, group2
-    redirect-uri-template: '{baseUrl}/login/oauth2/code/azure-client'
+#azure:
+#  activedirectory:
+#    tenant-id: 3a3181a3-bb5d-40d6-a419-1182632ff24e
+#    client-id: e66bdc97-e838-4a32-b244-cedbd47dc842
+#    client-secret: Fua7Q~4Q4.4Xx9~TBLQ8UCWCS5Q2xwkr4cn-B
+#    user-group:
+#      allowed-group-names: group1, group2
+#    redirect-uri-template: '{baseUrl}/login/oauth2/code/azure-client'
