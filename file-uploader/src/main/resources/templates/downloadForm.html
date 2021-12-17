@@ -1,0 +1,35 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload / Download</title>
+</head>
+<body>
+
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+
+<div>
+    <h3>List of Documents</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Id </th>
+            <th>Name     </th>
+            <th>File Size  </th>
+            <th>Download Link</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="file:${findDTOs}">
+            <td th:text="${file.id}" />
+            <td th:text="${file.fileName}"/>
+            <td th:text="${file.fileSize + ' byte'}"/>
+            <td><a th:href="@{'/downloadFile/'+${file.id}}">Download</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

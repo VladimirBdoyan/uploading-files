@@ -63,6 +63,14 @@ public class FileUploadController {
         model.addAttribute("findDTOs", findDTOs);
         return "downloadForm";
     }
+    @GetMapping("/downloadFile/{id}")
+    public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable Long id) {
+        FileEntity fileEntity = fileUploadService.getFileById(id).get();
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType("application/octet-stream"))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileEntity.getName() + "\"")
+                .body(new ByteArrayResource(fileEntity.getData()));
+    }
 }
 
 
