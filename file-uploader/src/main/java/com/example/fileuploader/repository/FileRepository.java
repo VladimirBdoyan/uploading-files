@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface FileRepository extends JpaRepository<FileEntity, Long>, JpaSpecificationExecutor<FileEntity> {
     public List<FileEntity> getAllByCreatedAtLessThanEqual(Date createdAt);
+    Iterable<FileEntity> findAllByNameContains(String key);
 }

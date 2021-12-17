@@ -1,0 +1,17 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<body>
+
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+
+<div>
+    <ul>
+        <li th:each="findDTOs : ${findDTOs}">
+            <a th:href="${findDTOs}" th:text="${findDTOs}" />
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
