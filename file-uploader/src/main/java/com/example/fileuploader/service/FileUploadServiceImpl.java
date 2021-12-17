@@ -1,5 +1,4 @@
 package com.example.fileuploader.service;
-
 import com.example.fileuploader.dto.FileUploadResponseDTO;
 import com.example.fileuploader.entity.FileEntity;
 import com.example.fileuploader.repository.FileRepository;
@@ -13,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FileUploadServiceImpl implements FileUploadService {
@@ -34,8 +34,7 @@ public class FileUploadServiceImpl implements FileUploadService {
         fileEntity.setFileSize(file.getSize());
         fileEntity.setCreatedAt(createdAt);
 
-        fileEntity = fileRepository.save(fileEntity);
-        System.out.println(fileEntity);
+        fileRepository.save(fileEntity);
     }
 
     @Override
@@ -48,9 +47,13 @@ public class FileUploadServiceImpl implements FileUploadService {
         return filesDTOs;
     }
 
+    @Override
+    public Optional<FileEntity> getFileById (Long id){
+        return fileRepository.findById(id);
+    }
+    @Override
     public List<FileEntity> getAllFiles(){
         return fileRepository.findAll();
     }
-
 
 }

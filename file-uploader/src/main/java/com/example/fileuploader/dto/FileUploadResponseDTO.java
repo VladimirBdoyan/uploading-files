@@ -3,11 +3,19 @@ package com.example.fileuploader.dto;
 import java.util.Date;
 
 public class FileUploadResponseDTO {
+    private Long id;
     private String fileName;
     private Long fileSize;
     private Date uploadingDate;
     private String userName;
-    private String url;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFileName() {
         return fileName;

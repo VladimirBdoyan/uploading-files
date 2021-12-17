@@ -23,6 +23,7 @@ public final class UploadedFileMapper {
 
     public static FileUploadResponseDTO mapToDTO(FileEntity entity){
         FileUploadResponseDTO dto = new FileUploadResponseDTO();
+        dto.setId(entity.getId());
         dto.setFileName(entity.getName());
         dto.setFileSize(entity.getFileSize());
         dto.setUploadingDate(entity.getCreatedAt());
