@@ -7,7 +7,7 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name ="files")
+@Table(name = "files")
 public class FileEntity {
 
     @Id

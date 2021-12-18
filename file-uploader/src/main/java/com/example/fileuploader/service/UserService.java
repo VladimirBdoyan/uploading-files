@@ -1,2 +1,7 @@
-package com.example.fileuploader.service;public interface UserService {
+package com.example.fileuploader.service;
+
+import java.security.Principal;
+
+public interface UserService {
+    Long saveUser(Principal principal);
 }
