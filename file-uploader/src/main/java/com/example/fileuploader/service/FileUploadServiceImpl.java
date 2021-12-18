@@ -1,4 +1,5 @@
 package com.example.fileuploader.service;
+
 import com.example.fileuploader.dto.FileUploadResponseDTO;
 import com.example.fileuploader.entity.FileEntity;
 import com.example.fileuploader.repository.FileRepository;
@@ -18,14 +19,13 @@ import java.util.Optional;
 public class FileUploadServiceImpl implements FileUploadService {
     private final FileRepository fileRepository;
 
-
     public FileUploadServiceImpl(FileRepository fileRepository) {
         this.fileRepository = fileRepository;
     }
 
     @Transactional
     @Override
-    public void saveUploadedFile(MultipartFile file) throws IOException {
+    public Long saveUploadedFile(MultipartFile file) throws IOException {
         Date createdAt = new Date();
         FileEntity fileEntity = new FileEntity();
         fileEntity.setName(StringUtils.cleanPath(file.getOriginalFilename()));
@@ -33,26 +33,27 @@ public class FileUploadServiceImpl implements FileUploadService {
         fileEntity.setData(file.getBytes());
         fileEntity.setFileSize(file.getSize());
         fileEntity.setCreatedAt(createdAt);
-
-        fileRepository.save(fileEntity);
+        fileEntity = fileRepository.save(fileEntity);
+        return fileEntity.getId();
     }
 
     @Override
     public List<FileUploadResponseDTO> search(String keyword) {
         List<FileUploadResponseDTO> filesDTOs;
         List<FileEntity> fileEntities = new ArrayList<>();
-        fileRepository.findAllByNameContains(keyword)
+        fileRepository.findByNameContainingIgnoreCase(keyword)
                 .forEach(fileEntities::add);
         filesDTOs = UploadedFileMapper.mapToDTOs(fileEntities);
         return filesDTOs;
     }
 
     @Override
-    public Optional<FileEntity> getFileById (Long id){
+    public Optional<FileEntity> getFileById(Long id) {
         return fileRepository.findById(id);
     }
+
     @Override
-    public List<FileEntity> getAllFiles(){
+    public List<FileEntity> getAllFiles() {
         return fileRepository.findAll();
     }
 

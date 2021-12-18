@@ -9,9 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface FileUploadService {
-    void saveUploadedFile(MultipartFile file) throws IOException;
+    Long saveUploadedFile(MultipartFile file) throws IOException;
+
     List<FileUploadResponseDTO> search(String keyword);
-    Optional<FileEntity> getFileById (Long id);
+
+    Optional<FileEntity> getFileById(Long id);
+
     List<FileEntity> getAllFiles();
 
 }

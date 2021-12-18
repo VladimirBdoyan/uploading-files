@@ -25,7 +25,7 @@
             <td th:text="${file.id}" />
             <td th:text="${file.fileName}"/>
             <td th:text="${file.fileSize + ' byte'}"/>
-            <td><a th:href="@{'/downloadFile/'+${file.id}}">Download</a></td>
+            <td><a th:href="@{'/files/downloadFile/'+${file.id}}">Download</a></td>
         </tr>
         </tbody>
     </table>
