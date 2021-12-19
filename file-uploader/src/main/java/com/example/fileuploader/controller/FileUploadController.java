@@ -63,12 +63,12 @@ public class FileUploadController {
         return "redirect:/files/home";
     }
 
-    @GetMapping("/search/{keyword}")
-    public ModelAndView search(@PathVariable("keyword") String keyword, Model model) {
+    @GetMapping("/search")
+    public ModelAndView search(@RequestParam String fileName, Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("downloadForm");
         //TODO must handle not found exception
-        List<FileUploadResponseDTO> findDTOs = fileUploadService.search(keyword);
+        List<FileUploadResponseDTO> findDTOs = fileUploadService.search(fileName);
         model.addAttribute("findDTOs", findDTOs);
         return modelAndView;
     }
